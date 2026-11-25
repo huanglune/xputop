@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-"""Demonstrate `nvitop.take_snapshots` across NVML and CUDA enumerations.
+"""Demonstrate `xputop.take_snapshots` across NVML and CUDA enumerations.
 
 Run without cloning the repository using ``uv``::
 
@@ -23,16 +23,16 @@ Run without cloning the repository using ``uv``::
 
 # /// script
 # requires-python = ">= 3.8"
-# dependencies = ["nvitop"]
+# dependencies = ["xputop"]
 # ///
 
 from __future__ import annotations
 
-from nvitop import Device, take_snapshots
+from xputop import Device, take_snapshots
 
 
 def main() -> None:
-    """Exercise every form of :func:`nvitop.take_snapshots`."""
+    """Exercise every form of :func:`xputop.take_snapshots`."""
     print('# Snapshot of all NVML devices and the GPU processes on them')
     print(take_snapshots())  # equivalent to `take_snapshots(Device.all())`
 

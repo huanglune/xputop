@@ -23,14 +23,14 @@ Run without cloning the repository using ``uv``::
 
 # /// script
 # requires-python = ">= 3.8"
-# dependencies = ["nvitop"]
+# dependencies = ["xputop"]
 # ///
 
 from __future__ import annotations
 
 import time
 
-from nvitop import Device, ResourceMetricCollector, collect_in_background
+from xputop import Device, ResourceMetricCollector, collect_in_background
 
 
 class InMemoryLogger:

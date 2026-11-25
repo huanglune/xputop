@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-"""Use `nvitop.select_devices` to programmatically pick CUDA devices for a job.
+"""Use `xputop.select_devices` to programmatically pick CUDA devices for a job.
 
 Run without cloning the repository using ``uv``::
 
@@ -23,19 +23,19 @@ Run without cloning the repository using ``uv``::
 
 # /// script
 # requires-python = ">= 3.8"
-# dependencies = ["nvitop"]
+# dependencies = ["xputop"]
 # ///
 
 from __future__ import annotations
 
 import os
 
-from nvitop import select_devices
+from xputop import select_devices
 
 
 def main() -> None:
-    """Pick CUDA devices with `nvitop.select_devices` and set ``CUDA_VISIBLE_DEVICES``."""
-    # Equivalent to the `nvisel` CLI, but as a Python call
+    """Pick CUDA devices with `xputop.select_devices` and set ``CUDA_VISIBLE_DEVICES``."""
+    # Equivalent to the `xpusel` CLI, but as a Python call
     indices = select_devices(format='index', min_count=1, min_free_memory='100MiB')
     print(f'Selected indices: {indices}')
 

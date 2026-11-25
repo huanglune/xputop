@@ -23,7 +23,7 @@ Run without cloning the repository using ``uv`` (which installs the dependencies
 
 # /// script
 # requires-python = ">= 3.8"
-# dependencies = ["nvitop", "pandas"]
+# dependencies = ["xputop", "pandas"]
 # ///
 
 from __future__ import annotations
@@ -33,7 +33,7 @@ import time
 
 import pandas as pd  # pylint: disable=import-error
 
-from nvitop import ResourceMetricCollector
+from xputop import ResourceMetricCollector
 
 
 # Keep the demo short; bump this for a longer log

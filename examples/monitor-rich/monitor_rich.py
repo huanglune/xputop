@@ -23,7 +23,7 @@ Run without cloning the repository using ``uv``::
 
 # /// script
 # requires-python = ">= 3.8"
-# dependencies = ["nvitop", "rich >= 14.0"]
+# dependencies = ["xputop", "rich >= 14.0"]
 # ///
 
 from __future__ import annotations
@@ -46,13 +46,13 @@ from rich.table import Table
 from rich.text import Text
 
 # pylint: enable=import-error
-from nvitop import NA, Device, GpuProcess, bytes2human, host, libnvml, utilization2string
+from xputop import NA, Device, GpuProcess, bytes2human, host, libnvml, utilization2string
 
 
 if TYPE_CHECKING:
     from collections.abc import Generator
 
-    from nvitop import Snapshot
+    from xputop import Snapshot
 
 
 MIN_BAR_WIDTH = 5

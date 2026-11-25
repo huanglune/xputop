@@ -1,15 +1,6 @@
 #!/usr/bin/env python3
 
-# To install `nvitop` with specific version of `nvidia-ml-py`, use:
-#
-#   pip install nvidia-ml-py==xx.yyy.zz nvitop
-#
-# or
-#
-#   pip install 'nvitop[cudaXX]'
-#
-
-"""Setup script for ``nvitop``."""
+"""Setup script for ``xputop``."""
 
 from __future__ import annotations
 
@@ -73,8 +64,8 @@ def vcs_version(name: str, path: Path | str) -> Generator[ModuleType]:
 
 if __name__ == '__main__':
     extra_requirements = {
-        'exporter': ['nvitop-exporter'],
-        'prometheus': ['nvitop-exporter'],
+        'exporter': ['xputop-exporter'],
+        'prometheus': ['xputop-exporter'],
         'lint': [
             'ruff',
             'pylint[spelling]',
@@ -83,29 +74,11 @@ if __name__ == '__main__':
             'typing-extensions',
             'pre-commit',
         ],
-        'cuda10': ['nvidia-ml-py == 11.450.51'],
     }
 
-    with vcs_version(name='nvitop.version', path=HERE / 'nvitop' / 'version.py') as version:
-        for pynvml_major in sorted(
-            {int(pynvml.partition('.')[0]) for pynvml in version.PYNVML_VERSION_CANDIDATES},
-        ):
-            pynvml_range = [
-                pynvml
-                for pynvml in version.PYNVML_VERSION_CANDIDATES
-                if pynvml.startswith(f'{pynvml_major}.')
-            ]
-            if len(pynvml_range) == 1:
-                extra_requirements[f'cuda{pynvml_major}'] = [
-                    f'nvidia-ml-py == {pynvml_range[0]}',
-                ]
-            elif len(pynvml_range) >= 2:
-                extra_requirements[f'cuda{pynvml_major}'] = [
-                    f'nvidia-ml-py >= {pynvml_range[0]}, <= {pynvml_range[-1]}',
-                ]
-
+    with vcs_version(name='xputop.version', path=HERE / 'xputop' / 'version.py') as version:
         setup(
-            name='nvitop',
+            name='kunlun-xputop',
             version=version.__version__,
             extras_require=extra_requirements,
         )

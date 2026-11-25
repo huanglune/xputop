@@ -23,7 +23,7 @@ Run without cloning the repository using ``uv`` (which installs the dependencies
 
 # /// script
 # requires-python = ">= 3.8"
-# dependencies = ["nvitop", "torch", "tensorboard"]
+# dependencies = ["xputop", "torch", "tensorboard"]
 # ///
 
 from __future__ import annotations
@@ -34,7 +34,7 @@ import torch  # pylint: disable=import-error
 from torch import nn  # pylint: disable=import-error
 from torch.utils.tensorboard import SummaryWriter  # pylint: disable=import-error
 
-from nvitop import CudaDevice, ResourceMetricCollector
+from xputop import CudaDevice, ResourceMetricCollector
 
 
 def add_scalar_dict(

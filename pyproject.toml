@@ -3,19 +3,22 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "nvitop"
-description = "An interactive NVIDIA-GPU process viewer and beyond, the one-stop solution for GPU process management."
+name = "kunlun-xputop"
+description = "An interactive Kunlunxin-XPU process viewer and beyond, the one-stop solution for XPU process management."
 readme = "README.md"
 requires-python = ">= 3.8"
-authors = [{ name = "Xuehai Pan", email = "XuehaiPan@pku.edu.cn" }]
+authors = [
+    { name = "Xuehai Pan", email = "XuehaiPan@pku.edu.cn" },
+    { name = "huanglune" },
+]
 license = { text = "Apache-2.0 AND GPL-3.0-only" }
 keywords = [
-    "nvidia",
-    "nvidia-smi",
-    "NVIDIA",
-    "NVML",
-    "CUDA",
-    "GPU",
+    "kunlunxin",
+    "xpu-smi",
+    "XPU",
+    "XPUML",
+    "P800",
+    "xputop",
     "top",
     "monitoring",
 ]
@@ -35,7 +38,6 @@ classifiers = [
     "Operating System :: Microsoft :: Windows",
     "Operating System :: POSIX :: Linux",
     "Environment :: GPU",
-    "Environment :: GPU :: NVIDIA CUDA",
     "Environment :: Console",
     "Environment :: Console :: Curses",
     "Intended Audience :: Developers",
@@ -47,8 +49,7 @@ classifiers = [
     "Topic :: Utilities",
 ]
 dependencies = [
-    # Sync with nvitop/version.py and requirements.txt
-    "nvidia-ml-py >= 11.450.51, < 13.616.0a0",
+    # Sync with requirements.txt
     "psutil >= 5.6.6",
     "colorama >= 0.4.0; platform_system == 'Windows'",
     "windows-curses >= 2.2.0; platform_system == 'Windows'",
@@ -56,23 +57,26 @@ dependencies = [
 dynamic = ["version", "optional-dependencies"]
 
 [project.scripts]
-nvitop = "nvitop.cli:main"
-nvisel = "nvitop.select:main"
+xputop = "xputop.cli:main"
+xpusel = "xputop.select:main"
+kunlun-xputop = "xputop.cli:main"
+nvitop = "xputop.cli:main"
+nvisel = "xputop.select:main"
 
 [project.urls]
-Homepage = "https://github.com/XuehaiPan/nvitop"
-Repository = "https://github.com/XuehaiPan/nvitop"
-Documentation = "https://nvitop.readthedocs.io"
-"Bug Report" = "https://github.com/XuehaiPan/nvitop/issues"
+Homepage = "https://github.com/huanglune/xputop"
+Repository = "https://github.com/huanglune/xputop"
+Documentation = "https://github.com/huanglune/xputop#readme"
+"Bug Report" = "https://github.com/huanglune/xputop/issues"
 
 [tool.setuptools.packages.find]
-include = ["nvitop", "nvitop.*"]
+include = ["xputop", "xputop.*"]
 
 [tool.mypy]
 # Sync with requires-python
 python_version = "3.8"
-mypy_path = [".", "nvitop-exporter"]
-exclude = ["nvitop-exporter/setup.py"]
+mypy_path = [".", "xputop-exporter"]
+exclude = ["xputop-exporter/setup.py"]
 pretty = true
 show_column_numbers = true
 show_error_codes = true
@@ -114,7 +118,7 @@ ignore-words = "docs/source/spelling_wordlist.txt"
 target-version = "py38"
 line-length = 100
 output-format = "full"
-src = ["nvitop", "nvitop-exporter/nvitop_exporter"]
+src = ["xputop", "xputop-exporter/xputop_exporter"]
 
 [tool.ruff.format]
 quote-style = "single"
@@ -188,10 +192,10 @@ ignore = [
 "setup.py" = [
     "D",       # pydocstyle
 ]
-"nvitop/api/lib*.py" = [
+"xputop/api/lib*.py" = [
     "N",       # pep8-naming
 ]
-"nvitop/tui/**/*.py" = [
+"xputop/tui/**/*.py" = [
     "D",       # pydocstyle
 ]
 "examples/**/*.py" = [
@@ -202,10 +206,10 @@ ignore = [
     "ANN",     # flake8-annotations (framework callbacks have boilerplate signatures)
     "D",       # pydocstyle (framework-mandated callback overrides are obvious without docstrings)
 ]
-"!nvitop/tui/**/*.py" = [
+"!xputop/tui/**/*.py" = [
     "TID251",  # banned-api
 ]
-"nvitop/tui/library/*.py" = [
+"xputop/tui/library/*.py" = [
     "TID251",  # banned-api
 ]
 "docs/source/conf.py" = [
@@ -214,7 +218,7 @@ ignore = [
 ]
 
 [tool.ruff.lint.isort]
-known-first-party = ["nvitop", "nvitop_exporter"]
+known-first-party = ["xputop", "xputop_exporter"]
 extra-standard-library = ["typing_extensions"]
 known-local-folder = ["tests"]
 lines-after-imports = 2
@@ -234,4 +238,4 @@ inline-quotes = "single"
 ban-relative-imports = "all"
 
 [tool.ruff.lint.flake8-tidy-imports.banned-api]
-"nvitop.api".msg = "Use `nvitop.tui.library` instead of `nvitop.api` in `nvitop.tui`."
+"xputop.api".msg = "Use `xputop.tui.library` instead of `xputop.api` in `xputop.tui`."

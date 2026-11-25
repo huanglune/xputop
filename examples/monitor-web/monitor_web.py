@@ -16,7 +16,7 @@
 # ==============================================================================
 """Minimal stdlib HTTP(S) GPU dashboard built on ``nvitop``.
 
-Drives :func:`nvitop.collect_in_background` on a daemon thread, stores the samples in a rotating
+Drives :func:`xputop.collect_in_background` on a daemon thread, stores the samples in a rotating
 ring buffer (24h by default), and serves a small browser dashboard plus JSON endpoints
 (``/metrics.json``, ``/history.json``) over either HTTP or HTTPS using only the Python standard
 library.
@@ -28,7 +28,7 @@ Run without cloning the repository using ``uv``::
 
 # /// script
 # requires-python = ">= 3.8"
-# dependencies = ["nvitop"]
+# dependencies = ["xputop"]
 # ///
 
 from __future__ import annotations
@@ -52,7 +52,7 @@ from collections import deque
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, NamedTuple, TextIO, TypedDict
 
-from nvitop import (
+from xputop import (
     Device,
     GiB,
     MiB,

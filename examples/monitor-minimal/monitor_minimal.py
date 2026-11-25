@@ -23,12 +23,12 @@ Run without cloning the repository using ``uv``::
 
 # /// script
 # requires-python = ">= 3.8"
-# dependencies = ["nvitop"]
+# dependencies = ["xputop"]
 # ///
 
 from __future__ import annotations
 
-from nvitop import Device
+from xputop import Device
 
 
 def main() -> None:

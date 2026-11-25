@@ -23,14 +23,14 @@ Run without cloning the repository using ``uv``::
 
 # /// script
 # requires-python = ">= 3.8"
-# dependencies = ["nvitop"]
+# dependencies = ["xputop"]
 # ///
 
 from __future__ import annotations
 
 import time
 
-from nvitop import NA, CudaDevice, GpuProcess, bytes2human, colored, host
+from xputop import NA, CudaDevice, GpuProcess, bytes2human, colored, host
 
 
 def label(text: str) -> str:
@@ -46,7 +46,7 @@ def field(name: str, value: object, unit: str = '', *, width: int = 20, pad: int
 
 
 def cpu_percent_text(value: object) -> str:
-    """Format a CPU percentage that may exceed 100% (multi-threaded), matching how nvitop rounds it."""
+    """Format a CPU percentage that may exceed 100% (multi-threaded), matching how xputop rounds it."""
     if not isinstance(value, (int, float)):
         return 'N/A'  # value is NA or otherwise unavailable
     if value < 1000.0:

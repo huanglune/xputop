@@ -30,7 +30,7 @@ from lightning.pytorch.callbacks import Callback
 from lightning.pytorch.utilities import rank_zero_only
 from lightning.pytorch.utilities.exceptions import MisconfigurationException
 
-from nvitop import CudaDevice, Device, MiB, libnvml
+from xputop import CudaDevice, Device, MiB, libnvml
 
 
 def get_devices_by_logical_ids(device_ids: list[int], unique: bool = True) -> list[CudaDevice]:
